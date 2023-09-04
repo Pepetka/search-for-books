@@ -1,0 +1,61 @@
+@import url('reset.scss');
+@import url('globals.scss');
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: 16px;
+
+  color-scheme: light dark;
+  color: var(--primary-color);
+  background-color: var(--primary-bg-color);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3rem;
+  line-height: 1.1;
+}
+
+a {
+  cursor: pointer;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid var(--secondary-color);
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--primary-button-color);
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: var(--hover-color);
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: var(--secondary-color);
+    background-color: var(--secondary-bg-color);
+  }
+  button {
+    background-color: var(--secondary-button-color);
+  }
+}

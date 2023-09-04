@@ -1,0 +1,41 @@
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react-hooks/recommended',
+    'prettier',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  parser: '@typescript-eslint/parser',
+  plugins: ['react-refresh', 'prettier', 'unused-imports', 'import'],
+  rules: {
+    'prefer-template': 'error',
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    '@typescript-eslint/no-unused-vars': 'warn',
+    'prettier/prettier': 'error',
+    'unused-imports/no-unused-imports': 'error',
+    'import/order': [
+      'error',
+      {
+        'newlines-between': 'never',
+        pathGroups: [
+          {
+            pattern: '@/**',
+            group: 'external',
+            position: 'after',
+          },
+        ],
+        distinctGroup: false,
+      },
+    ],
+  },
+  globals: {
+    __API__: true,
+    __API_KEY__: true,
+  },
+}
