@@ -1,9 +1,14 @@
-import './styles/App.scss';
+import { SearchBar } from '@/components/SeachBar';
+import { AppRouter } from '../providers/Router/ui/AppRouter/AppRouter';
+import './App.scss';
 
 function App() {
 	return (
 		<>
-			<h1>App</h1>
+			<SearchBar />
+			<main className="App">
+				<AppRouter />
+			</main>
 		</>
 	);
 }
