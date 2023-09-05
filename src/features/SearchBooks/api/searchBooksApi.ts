@@ -8,6 +8,7 @@ interface ISearchBooksApiArgs {
 	category: SearchParams['category'];
 	method: SearchParams['method'];
 	page?: number;
+	limit: number;
 }
 
 interface IResponse {
@@ -27,12 +28,11 @@ const fallbackVolumeInfo: DeepRequired<IVolumeInfo> = {
 	},
 };
 
-const maxResults = 30;
-
 export const searchBooksApi = rtkApi.injectEndpoints({
 	endpoints: (build) => ({
 		fetchBookListData: build.query<IResponse, ISearchBooksApiArgs>({
-			query: ({ q, category, method, page = 1 }) => {
+			query: ({ q, category, method, page = 1, limit }) => {
+				const maxResults = limit;
 				const startIndex = (page - 1) * maxResults;
 				const query = `${q}+subject:${category !== 'all' ? category : ''}`;
 
@@ -47,7 +47,7 @@ export const searchBooksApi = rtkApi.injectEndpoints({
 					},
 				};
 			},
-			transformResponse: (data: IResponse) => {
+			transformResponse: (data: IResponse, _, args) => {
 				const newDataItems =
 					data.items?.map((item) => ({
 						id: item.id,
@@ -57,7 +57,7 @@ export const searchBooksApi = rtkApi.injectEndpoints({
 				return {
 					totalItems: data.totalItems,
 					items: newDataItems,
-					endReached: newDataItems.length < maxResults,
+					endReached: newDataItems.length < args.limit,
 				};
 			},
 			serializeQueryArgs: ({ endpointName, queryArgs }) => {

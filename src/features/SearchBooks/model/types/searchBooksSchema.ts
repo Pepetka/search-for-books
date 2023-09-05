@@ -1,3 +1,4 @@
 export interface SearchBooksSchema {
-	page: number;
+	page: Record<string, number>;
+	_limit: number;
 }

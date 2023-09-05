@@ -1,9 +1,12 @@
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { SearchParams } from '@/shared/types/bookSearch';
 import { BookList } from '@/entities/Book';
-import { getSearchPaginationPage } from '../../model/selectors/searchBooksSelectors';
+import {
+	getSearchPaginationPage,
+	getSearchPaginationLimit,
+} from '../../model/selectors/searchBooksSelectors';
 import { useFetchBookListDataQuery } from '../../api/searchBooksApi';
 import { searchBooksActions } from '../../model/slice/searchBooksSlice';
 import cls from './SearchBooks.module.scss';
@@ -14,18 +17,27 @@ interface ISearchBooksProps {
 
 export const SearchBooks = memo((props: ISearchBooksProps) => {
 	const { searchParams } = props;
-	const page = useSelector(getSearchPaginationPage);
+	const page = useSelector(getSearchPaginationPage(searchParams));
+	const limit = useSelector(getSearchPaginationLimit);
 	const dispatch = useAppDispatch();
-	const { data, isLoading, isFetching, isError } = useFetchBookListDataQuery({
+	const { data, isFetching, isError } = useFetchBookListDataQuery({
 		page,
+		limit,
 		...searchParams,
 	});
 
+	console.log(page);
+
 	const onLoadMore = () => {
-		if (!data?.endReached) dispatch(searchBooksActions.setPage());
+		if (!data?.endReached)
+			dispatch(searchBooksActions.setPage({ searchParams }));
 	};
 
-	if (isLoading) {
+	useEffect(() => {
+		dispatch(searchBooksActions.initPage({ searchParams }));
+	}, [dispatch, searchParams]);
+
+	if (isFetching && !data) {
 		return (
 			<div className={cls.MainPage}>
 				<h2>Loading...</h2>
