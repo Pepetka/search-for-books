@@ -1,0 +1,21 @@
+.dark_theme {
+	--color: rgba(255, 255, 255, 0.87);
+	--invert-color: #213547;
+
+	--bg-color: #242424;
+	--invert-bg-color: #ffffff;
+
+	--button-color: #1a1a1a;
+	--invert-button-color: #a6a6a6;
+}
+
+.light_theme {
+	--color: #213547;
+	--invert-color: rgba(255, 255, 255, 0.87);
+
+	--bg-color: #ffffff;
+	--invert-bg-color: #242424;
+
+	--button-color: #a6a6a6;
+	--invert-button-color: #1a1a1a;
+}

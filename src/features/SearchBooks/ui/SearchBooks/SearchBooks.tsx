@@ -26,8 +26,6 @@ export const SearchBooks = memo((props: ISearchBooksProps) => {
 		...searchParams,
 	});
 
-	console.log(page);
-
 	const onLoadMore = () => {
 		if (!data?.endReached)
 			dispatch(searchBooksActions.setPage({ searchParams }));

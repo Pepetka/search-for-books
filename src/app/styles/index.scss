@@ -1,5 +1,6 @@
 @import url('reset.scss');
-@import url('globals.scss');
+@import url('globals/globals.scss');
+@import url('themes/themes.scss');
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -8,8 +9,6 @@
   font-size: 16px;
 
   color-scheme: light dark;
-  color: var(--primary-color);
-  background-color: var(--primary-bg-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -19,6 +18,8 @@
 }
 
 body {
+  color: var(--color);
+  background-color: var(--bg-color);
   min-width: 320px;
   min-height: 100vh;
 }
@@ -34,11 +35,11 @@ a {
 
 button {
   border-radius: 8px;
-  border: 1px solid var(--secondary-color);
+  border: 1px solid var(--invert-color);
   font-size: 1.5rem;
   font-weight: 500;
   font-family: inherit;
-  background-color: var(--primary-button-color);
+  background-color: var(--button-color);
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -48,14 +49,4 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: var(--secondary-color);
-    background-color: var(--secondary-bg-color);
-  }
-  button {
-    background-color: var(--secondary-button-color);
-  }
 }
