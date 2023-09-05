@@ -1,7 +1,7 @@
 import { rtkApi } from '@/shared/api/rtkApi';
-import { MainPageSchema } from '@/pages/MainPage';
+import { SearchBooksSchema } from '@/features/SearchBooks';
 
 export interface StateSchema {
-	mainPage: MainPageSchema;
+	searchBooks: SearchBooksSchema;
 	[rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 }

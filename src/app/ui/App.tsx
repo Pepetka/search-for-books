@@ -1,5 +1,5 @@
-import { SearchBar } from '@/components/SeachBar';
 import { Page } from '@/shared/ui/Page';
+import { SearchBar } from '@/features/SearchBooks/ui/SearchBar/SearchBar';
 import { AppRouter } from '../providers/Router/ui/AppRouter/AppRouter';
 import './App.scss';
 

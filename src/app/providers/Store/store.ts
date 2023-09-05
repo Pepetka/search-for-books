@@ -1,11 +1,11 @@
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
 import { rtkApi } from '@/shared/api/rtkApi';
-import { mainPageReducer } from '@/pages/MainPage';
+import { searchBooksReducer } from '@/features/SearchBooks';
 import { StateSchema } from './types/StateSchema.ts';
 
 export const createReduxStore = (initialState?: StateSchema) => {
 	const rootReducer: ReducersMapObject<StateSchema> = {
-		mainPage: mainPageReducer,
+		searchBooks: searchBooksReducer,
 		[rtkApi.reducerPath]: rtkApi.reducer,
 	};
 
