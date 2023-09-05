@@ -8,5 +8,13 @@ declare module '*.svg' {
 
 declare module '*.jpg';
 
+type DeepPartial<T> = T extends object
+	? { [P in keyof T]?: DeepPartial<T[P]> }
+	: T;
+
+type DeepRequired<T> = {
+	[P in keyof T]-?: T[P] extends object ? DeepRequired<T[P]> : T[P];
+};
+
 declare const __API__: string;
 declare const __API_KEY__: string;

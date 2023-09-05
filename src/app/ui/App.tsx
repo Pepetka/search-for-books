@@ -1,15 +1,18 @@
 import { SearchBar } from '@/components/SeachBar';
+import { Page } from '@/shared/ui/Page';
 import { AppRouter } from '../providers/Router/ui/AppRouter/AppRouter';
 import './App.scss';
 
 function App() {
 	return (
-		<>
-			<SearchBar />
-			<main className="App">
+		<div className="App">
+			<header>
+				<SearchBar />
+			</header>
+			<Page>
 				<AppRouter />
-			</main>
-		</>
+			</Page>
+		</div>
 	);
 }
 

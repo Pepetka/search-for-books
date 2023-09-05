@@ -6,6 +6,7 @@ import {
 } from '@/shared/const/router';
 import { NotFoundPage } from '@/pages/NoteFoundPage';
 import { MainPage } from '@/pages/MainPage';
+import { BookPage } from '@/pages/BookPage';
 
 export const routeConfig: Record<AppRoutes, RouteProps> = {
 	[AppRoutes.MAIN]: {
@@ -13,8 +14,8 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
 		element: <MainPage />,
 	},
 	[AppRoutes.BOOK_PAGE]: {
-		path: getBookPagePath(':id'),
-		element: <MainPage />,
+		path: getBookPagePath(':bookId'),
+		element: <BookPage />,
 	},
 	[AppRoutes.NOT_FOUND]: {
 		path: '/*',

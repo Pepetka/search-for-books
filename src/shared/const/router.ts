@@ -4,9 +4,9 @@ export enum AppRoutes {
 	NOT_FOUND = 'NotFound',
 }
 
-export const getMainPagePath = () => {
-	return '/books';
+export const getMainPagePath = (searchParams?: string) => {
+	return `/books${searchParams ? `?${searchParams}` : ''}`;
 };
 export const getBookPagePath = (id: string) => {
-	return `/books/${id}`;
+	return `/books/item/${id}`;
 };

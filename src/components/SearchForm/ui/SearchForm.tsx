@@ -1,25 +1,27 @@
-import { ChangeEvent, FormEvent, memo, useState } from 'react';
-import SearchSvg from '@/shared/assets/search.svg';
+import { ChangeEvent, FormEvent, memo, useEffect, useState } from 'react';
+import SearchSvg from '@/shared/assets/svg/search.svg';
+import {
+	categoriesArray,
+	defaultSearchParams,
+	sortMethodsArray,
+} from '@/shared/const/bookSort';
+import { SearchParams } from '@/shared/types/bookSearch';
 import cls from './SearchForm.module.scss';
 
-const categoriesArray = [
-	'all',
-	'art',
-	'biography',
-	'computers',
-	'history',
-	'medical',
-	'poetry',
-] as const;
+interface ISearchFormProps {
+	onSubmit?: (data: SearchParams) => void;
+	initialSearchParams?: SearchParams;
+}
 
-const sortMethodsArray = ['relevance', 'newest'] as const;
-
-export const SearchForm = memo(() => {
-	const [search, setSearch] = useState('');
-	const [selectedCategory, setSelectedCategory] =
-		useState<(typeof categoriesArray)[number]>('all');
-	const [selectedMethod, setSelectedMethod] =
-		useState<(typeof sortMethodsArray)[number]>('relevance');
+export const SearchForm = memo((props: ISearchFormProps) => {
+	const { onSubmit, initialSearchParams = defaultSearchParams } = props;
+	const [search, setSearch] = useState(initialSearchParams.q);
+	const [selectedCategory, setSelectedCategory] = useState(
+		initialSearchParams.category
+	);
+	const [selectedMethod, setSelectedMethod] = useState(
+		initialSearchParams.method
+	);
 
 	const onSearch = (event: ChangeEvent<HTMLInputElement>) => {
 		setSearch(event.target.value);
@@ -33,16 +35,26 @@ export const SearchForm = memo(() => {
 		setSelectedMethod(event.target.value as (typeof sortMethodsArray)[number]);
 	};
 
-	const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+	const onSubmitHandle = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
-		console.log(
-			`search: ${search}; category: ${selectedCategory}; method: ${selectedMethod}`
-		);
+		onSubmit?.({
+			q: search,
+			category: selectedCategory,
+			method: selectedMethod,
+		});
 	};
 
+	useEffect(() => {
+		if (initialSearchParams !== defaultSearchParams) {
+			setSearch(initialSearchParams.q);
+			setSelectedCategory(initialSearchParams.category);
+			setSelectedMethod(initialSearchParams.method);
+		}
+	}, [initialSearchParams]);
+
 	return (
-		<form onSubmit={onSubmit} className={cls.SearchForm}>
+		<form onSubmit={onSubmitHandle} className={cls.SearchForm}>
 			<label>
 				<input
 					placeholder="Search"
@@ -50,7 +62,7 @@ export const SearchForm = memo(() => {
 					value={search}
 					onChange={onSearch}
 				/>
-				<button className={cls.searchButton}>
+				<button className={cls.searchButton} type="submit">
 					<SearchSvg />
 				</button>
 			</label>
