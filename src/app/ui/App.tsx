@@ -1,9 +1,10 @@
-import { Page } from '@/shared/ui/Page';
-import { SearchBar } from '@/features/SearchBooks/ui/SearchBar/SearchBar';
+import { memo } from 'react';
+import { Page } from '@/widgets/Page';
+import { SearchBar } from '@/features/SearchBooks';
 import { AppRouter } from '../providers/Router/ui/AppRouter/AppRouter';
 import './App.scss';
 
-function App() {
+const App = memo(() => {
 	return (
 		<div className="App">
 			<header>
@@ -14,6 +15,6 @@ function App() {
 			</Page>
 		</div>
 	);
-}
+});
 
 export default App;
