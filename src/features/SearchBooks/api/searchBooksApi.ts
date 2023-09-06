@@ -75,6 +75,7 @@ export const searchBooksApi = rtkApi.injectEndpoints({
 			forceRefetch: ({ currentArg, previousArg }) => {
 				return currentArg?.page !== previousArg?.page;
 			},
+			keepUnusedDataFor: Infinity,
 		}),
 	}),
 });

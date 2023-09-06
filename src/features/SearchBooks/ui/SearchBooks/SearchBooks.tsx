@@ -4,8 +4,8 @@ import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { SearchParams } from '@/shared/types/bookSearch';
 import { BookList } from '@/entities/Book';
 import {
-	getSearchPaginationPage,
 	getSearchPaginationLimit,
+	getSearchPaginationPage,
 } from '../../model/selectors/searchBooksSelectors';
 import { useFetchBookListDataQuery } from '../../api/searchBooksApi';
 import { searchBooksActions } from '../../model/slice/searchBooksSlice';
@@ -27,15 +27,16 @@ export const SearchBooks = memo((props: ISearchBooksProps) => {
 	});
 
 	const onLoadMore = () => {
-		if (!data?.endReached)
+		if (!data?.endReached) {
 			dispatch(searchBooksActions.setPage({ searchParams }));
+		}
 	};
 
 	useEffect(() => {
 		dispatch(searchBooksActions.initPage({ searchParams }));
 	}, [dispatch, searchParams]);
 
-	if (isFetching && !data) {
+	if (isFetching && page === 1) {
 		return (
 			<div className={cls.MainPage}>
 				<h2>Loading...</h2>
