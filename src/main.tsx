@@ -1,7 +1,8 @@
 import { BrowserRouter } from 'react-router-dom';
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from '@/app/ui/App.tsx';
+import { PageLoader } from '@/shared/ui/PageLoader';
 import { ThemeProvider } from '@/app/providers/Themes';
 import { ErrorBoundary } from './app/providers/ErrorBoundary';
 import { StoreProvider } from './app/providers/Store/ui/StoreProvider.tsx';
@@ -15,7 +16,9 @@ ReactDOM.createRoot(root).render(
 			<StoreProvider>
 				<BrowserRouter>
 					<ThemeProvider>
-						<App />
+						<Suspense fallback={<PageLoader />}>
+							<App />
+						</Suspense>
 					</ThemeProvider>
 				</BrowserRouter>
 			</StoreProvider>

@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { SearchParams } from '@/shared/types/bookSearch';
 import { BookList } from '@/entities/Book';
+import { Loader } from '@/shared/ui/Loader';
 import {
 	getSearchPaginationLimit,
 	getSearchPaginationPage,
@@ -39,7 +40,7 @@ export const SearchBooks = memo((props: ISearchBooksProps) => {
 	if (isFetching && page === 1) {
 		return (
 			<div className={cls.MainPage}>
-				<h2>Loading...</h2>
+				<Loader theme="invert" />
 			</div>
 		);
 	}

@@ -1,7 +1,7 @@
 import { memo } from 'react';
-import cls from './NoteFoundPage.module.scss';
+import cls from './NotFoundPage.module.scss';
 
-const NoteFoundPage = memo(() => {
+const NotFoundPage = memo(() => {
 	return (
 		<div className={cls.NoteFoundPage}>
 			<h1>Page not found</h1>
@@ -9,4 +9,4 @@ const NoteFoundPage = memo(() => {
 	);
 });
 
-export default NoteFoundPage;
+export default NotFoundPage;

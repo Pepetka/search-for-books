@@ -1,1 +1,1 @@
-export { BookPage } from './ui/BookPage';
+export { BookPageLazy as BookPage } from './ui/BookPage.lazy';

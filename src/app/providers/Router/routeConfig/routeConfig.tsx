@@ -4,7 +4,7 @@ import {
 	getBookPagePath,
 	getMainPagePath,
 } from '@/shared/const/router';
-import { NotFoundPage } from '@/pages/NoteFoundPage';
+import { NotFoundPage } from '@/pages/NotFoundPage';
 import { MainPage } from '@/pages/MainPage';
 import { BookPage } from '@/pages/BookPage';
 

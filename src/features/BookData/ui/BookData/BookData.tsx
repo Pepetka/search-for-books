@@ -1,5 +1,7 @@
 import { memo } from 'react';
 import fallbackImg from '@/shared/assets/img/fallback.jpg';
+import { Loader } from '@/shared/ui/Loader';
+import { AppImage } from '@/shared/ui/AppImage';
 import { useFetchBookItemDataQuery } from '../../api/bookDataApi';
 import cls from './BookData.module.scss';
 
@@ -14,22 +16,30 @@ export const BookData = memo((props: IBookDataProps) => {
 		{ refetchOnMountOrArgChange: true }
 	);
 
-	if (isFetching || !data) {
-		return <div>Loading...</div>;
+	if (isFetching) {
+		return (
+			<div className={cls.BookData}>
+				<Loader theme="invert" />
+			</div>
+		);
 	}
 
 	if (isError) {
-		return <div>Something went wrong</div>;
+		return (
+			<div className={cls.BookData}>
+				<h2>Something went wrong</h2>
+			</div>
+		);
 	}
 
 	return (
 		<div className={cls.BookData}>
-			<div className={cls.imageWrapper}>
-				<img
-					src={data.volumeInfo.imageLinks?.thumbnail ?? fallbackImg}
-					alt={data.volumeInfo.title}
-				/>
-			</div>
+			<AppImage
+				className={cls.imageWrapper}
+				src={data.volumeInfo.imageLinks?.thumbnail ?? fallbackImg}
+				alt={data.volumeInfo.title}
+				theme="invert"
+			/>
 
 			<div className={cls.bookDataWrapper}>
 				{data.volumeInfo.categories && (

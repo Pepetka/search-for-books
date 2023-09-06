@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { BookData } from '@/features/BookData';
 import cls from './BookPage.module.scss';
 
-export const BookPage = memo(() => {
+const BookPage = memo(() => {
 	const { bookId = '' } = useParams<{ bookId: string }>();
 
 	return (
@@ -12,3 +12,5 @@ export const BookPage = memo(() => {
 		</div>
 	);
 });
+
+export default BookPage;
