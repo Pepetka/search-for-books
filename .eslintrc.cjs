@@ -6,10 +6,11 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
     'prettier',
+    'plugin:i18next/recommended'
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh', 'prettier', 'unused-imports', 'import'],
+  plugins: ['react-refresh', 'prettier', 'unused-imports', 'import', 'i18next'],
   rules: {
     'prefer-template': 'error',
     'react-refresh/only-export-components': [
@@ -31,6 +32,14 @@ module.exports = {
           },
         ],
         distinctGroup: false,
+      },
+    ],
+    'i18next/no-literal-string': [
+      'error',
+      {
+        markupOnly: true,
+        ignoreAttribute: [],
+        ignore: [],
       },
     ],
   },

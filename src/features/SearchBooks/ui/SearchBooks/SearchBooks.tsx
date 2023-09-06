@@ -1,5 +1,6 @@
 import { memo, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { SearchParams } from '@/shared/types/bookSearch';
 import { BookList } from '@/entities/Book';
@@ -18,6 +19,7 @@ interface ISearchBooksProps {
 
 export const SearchBooks = memo((props: ISearchBooksProps) => {
 	const { searchParams } = props;
+	const { t } = useTranslation();
 	const page = useSelector(getSearchPaginationPage(searchParams));
 	const limit = useSelector(getSearchPaginationLimit);
 	const dispatch = useAppDispatch();
@@ -48,14 +50,18 @@ export const SearchBooks = memo((props: ISearchBooksProps) => {
 	if (isError) {
 		return (
 			<div className={cls.MainPage}>
-				<h2>Something went wrong</h2>
+				<h2>{t('Something went wrong')}</h2>
 			</div>
 		);
 	}
 
 	return (
 		<div className={cls.SearchBooks}>
-			{data && <h2>Found {data.totalItems} results</h2>}
+			{data && (
+				<h2>
+					{t('Found')} {data.totalItems}
+				</h2>
+			)}
 			{data && <BookList books={data.items} />}
 			{!data?.endReached && (
 				<button
@@ -63,7 +69,7 @@ export const SearchBooks = memo((props: ISearchBooksProps) => {
 					onClick={onLoadMore}
 					disabled={isFetching}
 				>
-					{isFetching ? 'Loading...' : 'Load more'}
+					{isFetching ? t('Loading') : t('Load more')}
 				</button>
 			)}
 		</div>

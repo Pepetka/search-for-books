@@ -1,4 +1,5 @@
 import { ChangeEvent, FormEvent, memo, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { SearchParams } from '@/shared/types/bookSearch';
 import {
 	categoriesArray,
@@ -15,6 +16,7 @@ interface ISearchFormProps {
 
 export const SearchForm = memo((props: ISearchFormProps) => {
 	const { onSubmit, initialSearchParams } = props;
+	const { t } = useTranslation();
 	const [search, setSearch] = useState(initialSearchParams.q);
 	const [selectedCategory, setSelectedCategory] = useState(
 		initialSearchParams.category
@@ -61,7 +63,7 @@ export const SearchForm = memo((props: ISearchFormProps) => {
 		<form onSubmit={onSubmitHandle} className={cls.SearchForm}>
 			<label>
 				<input
-					placeholder="Search"
+					placeholder={t('Search')}
 					type="text"
 					value={search}
 					onChange={onSearch}
@@ -72,21 +74,21 @@ export const SearchForm = memo((props: ISearchFormProps) => {
 			</label>
 			<div className={cls.selectGroup}>
 				<label>
-					Categories
+					<span>{t('Category')}</span>
 					<select value={selectedCategory} onChange={onSelectCategory}>
 						{categoriesArray.map((category) => (
 							<option key={category} value={category}>
-								{category}
+								{t(category)}
 							</option>
 						))}
 					</select>
 				</label>
 				<label>
-					Sorting by
+					<span>{t('Sorting by')}</span>
 					<select value={selectedMethod} onChange={onSelectMethod}>
 						{sortMethodsArray.map((method) => (
 							<option key={method} value={method}>
-								{method}
+								{t(method)}
 							</option>
 						))}
 					</select>

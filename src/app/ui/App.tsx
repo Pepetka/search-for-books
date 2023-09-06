@@ -1,18 +1,13 @@
 import { memo } from 'react';
-import { Page } from '@/widgets/Page';
-import { SearchBar } from '@/features/SearchBooks';
+import { Header } from '@/widgets/Header';
 import { AppRouter } from '../providers/Router/ui/AppRouter/AppRouter';
 import './App.scss';
 
 const App = memo(() => {
 	return (
 		<div className="App">
-			<header>
-				<SearchBar />
-			</header>
-			<Page>
-				<AppRouter />
-			</Page>
+			<Header />
+			<AppRouter />
 		</div>
 	);
 });
