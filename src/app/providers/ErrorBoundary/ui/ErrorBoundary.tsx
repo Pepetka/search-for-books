@@ -1,4 +1,5 @@
 import { Component, ErrorInfo, ReactNode } from 'react';
+import { PageError } from '@/widgets/PageError';
 
 interface IErrorBoundaryProps {
 	children: ReactNode;
@@ -27,7 +28,7 @@ export class ErrorBoundary extends Component<
 
 	render() {
 		if (this.state.hasError) {
-			return <h1>Error</h1>;
+			return <PageError />;
 		}
 
 		return this.props.children;

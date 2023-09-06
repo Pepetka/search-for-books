@@ -1,0 +1,27 @@
+.ThemeSwitcher {
+	color: var(--secondary-color);
+	display: flex;
+	justify-content: end;
+
+	button {
+		background: none;
+		border: none;
+		font-size: 1rem;
+		text-decoration: underline;
+
+		&:hover {
+			border: none;
+			outline: none;
+		}
+
+		&:active {
+			border: none;
+			outline: none;
+		}
+
+		&:focus {
+			border: none;
+			outline: none;
+		}
+	}
+}

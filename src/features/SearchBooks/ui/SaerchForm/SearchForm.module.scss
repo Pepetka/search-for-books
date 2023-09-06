@@ -26,6 +26,12 @@
 		gap: 0.5rem;
 		font-size: 1rem;
 
+		span {
+			display: inline-block;
+			width: 100px;
+			text-align: end;
+		}
+
 		&:has(input) {
 			width: min(100%, 500px);
 		}

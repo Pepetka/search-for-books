@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import fallbackImg from '@/shared/assets/img/fallback.jpg';
 import { Loader } from '@/shared/ui/Loader';
 import { AppImage } from '@/shared/ui/AppImage';
@@ -11,6 +12,7 @@ interface IBookDataProps {
 
 export const BookData = memo((props: IBookDataProps) => {
 	const { bookId } = props;
+	const { t } = useTranslation();
 	const { data, isError, isFetching } = useFetchBookItemDataQuery(
 		{ bookId },
 		{ refetchOnMountOrArgChange: true }
@@ -27,10 +29,12 @@ export const BookData = memo((props: IBookDataProps) => {
 	if (isError) {
 		return (
 			<div className={cls.BookData}>
-				<h2>Something went wrong</h2>
+				<h2>{t('Something went wrong')}</h2>
 			</div>
 		);
 	}
+
+	if (!data) return;
 
 	return (
 		<div className={cls.BookData}>
@@ -49,22 +53,24 @@ export const BookData = memo((props: IBookDataProps) => {
 				)}
 				<div className={cls.titleBlock}>
 					{data.volumeInfo.title && (
-						<div className={cls.title}>Title: {data.volumeInfo.title}</div>
+						<div className={cls.title}>
+							{t('Title')}: {data.volumeInfo.title}
+						</div>
 					)}
 					{data.volumeInfo.subtitle && (
 						<div className={cls.subtitle}>
-							Subtitle: {data.volumeInfo.subtitle}
+							{t('Subtitle')}: {data.volumeInfo.subtitle}
 						</div>
 					)}
 					{data.volumeInfo.authors && (
 						<div className={cls.authors}>
-							Authors: {data.volumeInfo.authors.join(', ')}
+							{t('Authors')}: {data.volumeInfo.authors.join(', ')}
 						</div>
 					)}
 				</div>
 				{data.volumeInfo.description && (
 					<div className={cls.description}>
-						<span>Description:</span>
+						<span>{t('Description')}:</span>
 						<div
 							dangerouslySetInnerHTML={{ __html: data.volumeInfo.description }}
 						></div>
