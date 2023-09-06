@@ -60,9 +60,14 @@ export const SearchForm = memo((props: ISearchFormProps) => {
 	}, [initialSearchParams]);
 
 	return (
-		<form onSubmit={onSubmitHandle} className={cls.SearchForm}>
+		<form
+			data-testid="SearchForm"
+			onSubmit={onSubmitHandle}
+			className={cls.SearchForm}
+		>
 			<label>
 				<input
+					data-testid="SearchForm.search"
 					placeholder={t('Search')}
 					type="text"
 					value={search}
@@ -75,9 +80,17 @@ export const SearchForm = memo((props: ISearchFormProps) => {
 			<div className={cls.selectGroup}>
 				<label>
 					<span>{t('Category')}</span>
-					<select value={selectedCategory} onChange={onSelectCategory}>
+					<select
+						data-testid="SearchForm.category"
+						value={selectedCategory}
+						onChange={onSelectCategory}
+					>
 						{categoriesArray.map((category) => (
-							<option key={category} value={category}>
+							<option
+								data-testid={`SearchForm.category.${category}`}
+								key={category}
+								value={category}
+							>
 								{t(category)}
 							</option>
 						))}
@@ -85,9 +98,17 @@ export const SearchForm = memo((props: ISearchFormProps) => {
 				</label>
 				<label>
 					<span>{t('Sorting by')}</span>
-					<select value={selectedMethod} onChange={onSelectMethod}>
+					<select
+						data-testid="SearchForm.method"
+						value={selectedMethod}
+						onChange={onSelectMethod}
+					>
 						{sortMethodsArray.map((method) => (
-							<option key={method} value={method}>
+							<option
+								data-testid={`SearchForm.method.${method}`}
+								key={method}
+								value={method}
+							>
 								{t(method)}
 							</option>
 						))}

@@ -13,8 +13,8 @@ export const ThemeSwitcher = memo(() => {
 	};
 
 	return (
-		<div className={cls.ThemeSwitcher}>
-			<button onClick={onChangeTheme}>
+		<div data-testid="ThemeSwitcher" className={cls.ThemeSwitcher}>
+			<button data-testid="ThemeSwitcher.button" onClick={onChangeTheme}>
 				{theme === Theme.DARK ? t('Dark') : t('Light')}
 			</button>
 		</div>

@@ -1,5 +1,10 @@
 import { useCallback, useEffect, useRef } from 'react';
 
+/**
+ * Хук, возвращающий функцию, вызывающую callback с троттлингом
+ * @param callback - функция, выполняемая с троттлингом
+ * @param timeout - время между вызовами callback
+ */
 export const useThrottle = <T>(
 	callback: (args: T) => void,
 	timeout: number = 1000

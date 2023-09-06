@@ -8,7 +8,9 @@ import { NotFoundPage } from '@/pages/NotFoundPage';
 import { MainPage } from '@/pages/MainPage';
 import { BookPage } from '@/pages/BookPage';
 
-export const routeConfig: Record<AppRoutes, RouteProps> = {
+export type RouteConfig = Record<AppRoutes, RouteProps>;
+
+export const routeConfig: RouteConfig = {
 	[AppRoutes.MAIN]: {
 		path: getMainPagePath(),
 		element: <MainPage />,

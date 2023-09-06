@@ -1,7 +1,7 @@
 import { ImgHTMLAttributes, memo, useLayoutEffect, useState } from 'react';
 import fallbackImg from '@/shared/assets/img/fallback.jpg';
 import { Loader, LoaderTheme } from '@/shared/ui/Loader';
-import { classNames } from '@/shared/helpers/classNames';
+import { classNames } from '@/shared/helpers/classNames/classNames.ts';
 import cls from './AppImage.module.scss';
 
 interface IImageProps extends ImgHTMLAttributes<HTMLImageElement> {
@@ -28,7 +28,10 @@ export const AppImage = memo((props: IImageProps) => {
 
 	if (isError) {
 		return (
-			<div className={classNames([cls.AppImage, className])}>
+			<div
+				data-testid="AppImage.error"
+				className={classNames([cls.AppImage, className])}
+			>
 				<img src={fallbackImg} {...otherProps} alt={alt} />
 			</div>
 		);
@@ -36,7 +39,10 @@ export const AppImage = memo((props: IImageProps) => {
 
 	if (isLoading) {
 		return (
-			<div className={classNames([cls.AppImage, className])}>
+			<div
+				data-testid="AppImage.loading"
+				className={classNames([cls.AppImage, className])}
+			>
 				<div className={cls.loader}>
 					<Loader theme={theme} />
 				</div>
@@ -45,7 +51,10 @@ export const AppImage = memo((props: IImageProps) => {
 	}
 
 	return (
-		<div className={classNames([cls.AppImage, className])}>
+		<div
+			data-testid="AppImage"
+			className={classNames([cls.AppImage, className])}
+		>
 			<img src={src} {...otherProps} alt={alt} />
 		</div>
 	);

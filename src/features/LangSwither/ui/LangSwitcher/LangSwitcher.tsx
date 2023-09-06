@@ -11,8 +11,8 @@ export const LangSwitcher = memo(() => {
 	};
 
 	return (
-		<div className={cls.LangSwitcher}>
-			<button onClick={onChangeLang}>
+		<div data-testid="LangSwitcher" className={cls.LangSwitcher}>
+			<button data-testid="LangSwitcher.button" onClick={onChangeLang}>
 				{i18n.language === Lang.RU ? 'Ru' : 'En'}
 			</button>
 		</div>

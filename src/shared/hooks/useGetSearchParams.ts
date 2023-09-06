@@ -1,6 +1,14 @@
 import { useSearchParams } from 'react-router-dom';
 import { useCallback, useEffect, useMemo } from 'react';
 
+/**
+ * Хук, возвращающий параметры поиска url в виде объекта
+ * (при отсутствии параметров в url возвращает параметры из defaultSearchParams)
+ * и устанавливающий defaultSearchParams в url
+ * (при передаче withSet = true и при отсутствующих параметрах в url)
+ * @param defaultSearchParams - объект параметров по-умолчанию
+ * @param withSet - флаг, отвечающий за установку defaultSearchParams в url
+ */
 export const useGetSearchParams = <T extends Record<string, string>>(
 	defaultSearchParams: T,
 	withSet = false
