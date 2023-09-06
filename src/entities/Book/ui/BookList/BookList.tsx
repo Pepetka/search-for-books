@@ -11,7 +11,7 @@ export const BookList = memo((props: IBookListProps) => {
 	const { books } = props;
 
 	return (
-		<div className={cls.BookList}>
+		<div data-testid="BookList" className={cls.BookList}>
 			{books.map((book, index) => (
 				<BookCard key={`${book.id}index:${index}`} bookData={book} />
 			))}

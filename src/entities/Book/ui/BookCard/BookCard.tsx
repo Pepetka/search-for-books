@@ -21,16 +21,20 @@ export const BookCard = memo((props: IBookCardProps) => {
 	};
 
 	return (
-		<div onClick={onCardClick} className={cls.BookCard}>
+		<div data-testid="BookCard" onClick={onCardClick} className={cls.BookCard}>
 			<AppImage
 				className={cls.imageWrapper}
 				src={bookData.volumeInfo.imageLinks.thumbnail}
 				alt={bookData.volumeInfo.title}
 				theme="invert"
 			/>
-			<div className={cls.category}>{bookData.volumeInfo.categories[0]}</div>
-			<div className={cls.title}>{bookData.volumeInfo.title}</div>
-			<div className={cls.authors}>
+			<div data-testid="BookCard.category" className={cls.category}>
+				{bookData.volumeInfo.categories[0]}
+			</div>
+			<div data-testid="BookCard.title" className={cls.title}>
+				{bookData.volumeInfo.title}
+			</div>
+			<div data-testid="BookCard.authors" className={cls.authors}>
 				{bookData.volumeInfo.authors.join(', ')}
 			</div>
 		</div>

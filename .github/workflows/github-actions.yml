@@ -1,9 +1,19 @@
-name: linting, building
+name: linting, testing, building
 on:
   push:
-    branches: [master, dev]
+    branches: [master]
   pull_request:
     branches: [master]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
 jobs:
   linting:
     runs-on: ubuntu-latest
@@ -21,6 +31,41 @@ jobs:
       - name: linting typescript
         run: npm run lint:ts
 
+  testing:
+    runs-on: ubuntu-latest
+    concurrency: ci-${{ github.ref }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    strategy:
+      matrix:
+        node-version: [ 18.x ]
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install modules
+        run: npm ci
+      - name: unit testing
+        run: npm run test:unit
+        if: always()
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+        if: always()
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: 'reports'
+        if: always()
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+        if: always()
+
   building:
     runs-on: ubuntu-latest
     strategy:
@@ -36,3 +81,5 @@ jobs:
         run: npm ci
       - name: build production project
         run: npm run build
+        env:
+          VITE_API_KEY: ${{ secrets.VITE_API_KEY }}

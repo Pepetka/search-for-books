@@ -6,9 +6,12 @@ export const PageError = memo(() => {
 	const { t } = useTranslation();
 
 	return (
-		<div className={cls.PageError}>
+		<div data-testid="PageError" className={cls.PageError}>
 			<h1>{t('Something went wrong')}</h1>
-			<button onClick={() => window.location.reload()}>
+			<button
+				data-testid="PageError.button"
+				onClick={() => window.location.reload()}
+			>
 				{t('Reload page')}
 			</button>
 		</div>
