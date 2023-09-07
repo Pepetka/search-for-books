@@ -41,7 +41,7 @@ export const SearchBooks = memo((props: ISearchBooksProps) => {
 
 	if (isFetching && page === 1) {
 		return (
-			<div className={cls.MainPage}>
+			<div data-testid="SearchBooks.loading" className={cls.MainPage}>
 				<Loader theme="invert" />
 			</div>
 		);
@@ -49,22 +49,23 @@ export const SearchBooks = memo((props: ISearchBooksProps) => {
 
 	if (isError) {
 		return (
-			<div className={cls.MainPage}>
+			<div data-testid="SearchBooks.error" className={cls.MainPage}>
 				<h2>{t('Something went wrong')}</h2>
 			</div>
 		);
 	}
 
 	return (
-		<div className={cls.SearchBooks}>
+		<div data-testid="SearchBooks" className={cls.SearchBooks}>
 			{data && (
-				<h2>
+				<h2 data-testid="SearchBooks.total">
 					{t('Found')} {data.totalItems}
 				</h2>
 			)}
 			{data && <BookList books={data.items} />}
 			{!data?.endReached && (
 				<button
+					data-testid="SearchBooks.loadmore"
 					className={cls.button}
 					onClick={onLoadMore}
 					disabled={isFetching}

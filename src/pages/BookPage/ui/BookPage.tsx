@@ -7,7 +7,7 @@ const BookPage = memo(() => {
 	const { bookId = '' } = useParams<{ bookId: string }>();
 
 	return (
-		<div className={cls.BookPage}>
+		<div data-testid="BookPage" className={cls.BookPage}>
 			<BookData bookId={bookId} />
 		</div>
 	);

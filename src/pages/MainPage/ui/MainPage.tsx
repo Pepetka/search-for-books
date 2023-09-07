@@ -8,7 +8,7 @@ const MainPage = memo(() => {
 	const [searchParamsObject] = useGetSearchParams(defaultSearchParams, true);
 
 	return (
-		<div className={cls.MainPage}>
+		<div data-testid="MainPage" className={cls.MainPage}>
 			<SearchBooks searchParams={searchParamsObject} />
 		</div>
 	);

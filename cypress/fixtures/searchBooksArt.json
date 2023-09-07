@@ -1,0 +1,41 @@
+{
+	"totalItems": 2,
+	"items": [
+		{
+			"id": "testId 1",
+			"volumeInfo": {
+				"title": "Test Title 1",
+				"subtitle": "Test Subtitle",
+				"description": "Test description",
+				"authors": [
+					"Some Author 1",
+					"Some Author 2"
+				],
+				"imageLinks": {
+					"thumbnail": "someUrl"
+				},
+				"categories": [
+					"art"
+				]
+			}
+		},
+		{
+			"id": "testId 3",
+			"volumeInfo": {
+				"title": "Test Title 3",
+				"subtitle": "Test Subtitle",
+				"description": "Test description",
+				"authors": [
+					"Some Author 1",
+					"Some Author 2"
+				],
+				"imageLinks": {
+					"thumbnail": "someUrl"
+				},
+				"categories": [
+					"art"
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,23 @@
+{
+	"totalItems": 1,
+	"items": [
+		{
+			"id": "testId 1",
+			"volumeInfo": {
+				"title": "Test Title 1",
+				"subtitle": "Test Subtitle",
+				"description": "Test description",
+				"authors": [
+					"Some Author 1",
+					"Some Author 2"
+				],
+				"imageLinks": {
+					"thumbnail": "someUrl"
+				},
+				"categories": [
+					"art"
+				]
+			}
+		}
+	]
+}

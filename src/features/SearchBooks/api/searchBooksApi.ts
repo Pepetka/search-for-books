@@ -38,7 +38,7 @@ export const searchBooksApi = rtkApi.injectEndpoints({
 
 				return {
 					method: 'Get',
-					url: '/',
+					url: '',
 					params: {
 						startIndex,
 						maxResults,
