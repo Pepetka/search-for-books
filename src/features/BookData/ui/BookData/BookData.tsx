@@ -20,7 +20,7 @@ export const BookData = memo((props: IBookDataProps) => {
 
 	if (isFetching) {
 		return (
-			<div className={cls.BookData}>
+			<div data-testid="BookData.loading" className={cls.BookData}>
 				<Loader theme="invert" />
 			</div>
 		);
@@ -28,7 +28,7 @@ export const BookData = memo((props: IBookDataProps) => {
 
 	if (isError) {
 		return (
-			<div className={cls.BookData}>
+			<div data-testid="BookData.error" className={cls.BookData}>
 				<h2>{t('Something went wrong')}</h2>
 			</div>
 		);
@@ -37,7 +37,7 @@ export const BookData = memo((props: IBookDataProps) => {
 	if (!data) return;
 
 	return (
-		<div className={cls.BookData}>
+		<div data-testid="BookData" className={cls.BookData}>
 			<AppImage
 				className={cls.imageWrapper}
 				src={data.volumeInfo.imageLinks?.thumbnail ?? fallbackImg}
@@ -47,29 +47,29 @@ export const BookData = memo((props: IBookDataProps) => {
 
 			<div className={cls.bookDataWrapper}>
 				{data.volumeInfo.categories && (
-					<div className={cls.categories}>
+					<div data-testid="BookData.categories" className={cls.categories}>
 						{data.volumeInfo.categories.join(' / ')}
 					</div>
 				)}
 				<div className={cls.titleBlock}>
 					{data.volumeInfo.title && (
-						<div className={cls.title}>
+						<div data-testid="BookData.title" className={cls.title}>
 							{t('Title')}: {data.volumeInfo.title}
 						</div>
 					)}
 					{data.volumeInfo.subtitle && (
-						<div className={cls.subtitle}>
+						<div data-testid="BookData.subtitle" className={cls.subtitle}>
 							{t('Subtitle')}: {data.volumeInfo.subtitle}
 						</div>
 					)}
 					{data.volumeInfo.authors && (
-						<div className={cls.authors}>
+						<div data-testid="BookData.authors" className={cls.authors}>
 							{t('Authors')}: {data.volumeInfo.authors.join(', ')}
 						</div>
 					)}
 				</div>
 				{data.volumeInfo.description && (
-					<div className={cls.description}>
+					<div data-testid="BookData.description" className={cls.description}>
 						<span>{t('Description')}:</span>
 						<div
 							dangerouslySetInnerHTML={{ __html: data.volumeInfo.description }}

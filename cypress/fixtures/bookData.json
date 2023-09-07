@@ -1,0 +1,19 @@
+{
+	"id": "testId",
+	"volumeInfo": {
+		"title": "Test Title",
+		"subtitle": "Test Subtitle",
+		"description": "Test description",
+		"authors": [
+			"Some Author 1",
+			"Some Author 2"
+		],
+		"imageLinks": {
+			"thumbnail": "someUrl"
+		},
+		"categories": [
+			"art",
+			"biography"
+		]
+	}
+}

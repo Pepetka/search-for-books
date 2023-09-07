@@ -13,6 +13,9 @@ export const bookDataApi = rtkApi.injectEndpoints({
 			query: ({ bookId }) => ({
 				method: 'Get',
 				url: `/${bookId}`,
+				params: {
+					apiKey: '',
+				},
 			}),
 		}),
 	}),

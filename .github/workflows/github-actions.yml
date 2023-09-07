@@ -48,10 +48,23 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+      - uses: browser-actions/setup-chrome@v1
       - name: install modules
         run: npm ci
       - name: unit testing
         run: npm run test:unit
+        if: always()
+      - name: e2e testing
+        uses: cypress-io/github-action@v5
+        with:
+          install: false
+          record: true
+          start: npm run dev
+          wait-on: 'http://localhost:5173'
+          config: baseUrl=http://localhost:5173
+          browser: chrome
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         if: always()
       - name: Setup Pages
         uses: actions/configure-pages@v2

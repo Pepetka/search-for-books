@@ -6,6 +6,7 @@ export const rtkApi = createApi({
 		baseUrl: __API__,
 		paramsSerializer: (params) => {
 			const searchParams = new URLSearchParams(params);
+			searchParams.delete('apiKey');
 			searchParams.append('key', __API_KEY__);
 
 			return decodeURIComponent(searchParams.toString());

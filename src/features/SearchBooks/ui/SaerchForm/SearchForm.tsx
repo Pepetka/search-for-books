@@ -73,7 +73,11 @@ export const SearchForm = memo((props: ISearchFormProps) => {
 					value={search}
 					onChange={onSearch}
 				/>
-				<button className={cls.searchButton} type="submit">
+				<button
+					data-testid="SearchForm.submit"
+					className={cls.searchButton}
+					type="submit"
+				>
 					<SearchSvg />
 				</button>
 			</label>
@@ -86,11 +90,7 @@ export const SearchForm = memo((props: ISearchFormProps) => {
 						onChange={onSelectCategory}
 					>
 						{categoriesArray.map((category) => (
-							<option
-								data-testid={`SearchForm.category.${category}`}
-								key={category}
-								value={category}
-							>
+							<option key={category} value={category}>
 								{t(category)}
 							</option>
 						))}
@@ -104,11 +104,7 @@ export const SearchForm = memo((props: ISearchFormProps) => {
 						onChange={onSelectMethod}
 					>
 						{sortMethodsArray.map((method) => (
-							<option
-								data-testid={`SearchForm.method.${method}`}
-								key={method}
-								value={method}
-							>
+							<option key={method} value={method}>
 								{t(method)}
 							</option>
 						))}
