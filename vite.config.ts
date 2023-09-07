@@ -18,6 +18,10 @@ export default defineConfig(({ mode }) => {
 				'@': path.resolve(__dirname, 'src'),
 			},
 		},
+		preview: {
+			host: true,
+			port: 8080,
+		},
 		define: {
 			__API__: JSON.stringify(env.VITE_API),
 			__API_KEY__: JSON.stringify(env.VITE_API_KEY),
