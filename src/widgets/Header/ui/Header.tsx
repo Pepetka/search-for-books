@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
-import { LangSwitcher } from '@/features/LangSwither';
 import { SearchBar } from '@/features/SearchBooks';
+import { LangSwitcher } from '@/features/LangSwitcher';
 import cls from './Header.module.scss';
 
 export const Header = memo(() => {

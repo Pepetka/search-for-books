@@ -1,27 +1,106 @@
-# React + TypeScript + Vite
+## Production build
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**[Search For Books](https://gentle-malasada-f879c0.netlify.app)**
 
-Currently, two official plugins are available:
+## Запуск проекта
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- `npm install` - установка зависимостей
+- `npm run dev` - запуск dev проекта
+- `npm run build:docker` - сборка и предпросмотр prod билда в docker контейнере
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Скрипты
 
-- Configure the top-level `parserOptions` property like this:
+- `npm run dev` - запуск dev проекта
+- `npm run build` - сборка в prod режиме в папку dist
+- `npm run build:docker` - сборка и предпросмотр prod билда в docker контейнере
+- `npm run preview` - предпросмотр prod сборки
+- `npm run lint:ts` - проверка ts файлов линтером
+- `npm run lint:ts:fix` - исправление ts файлов линтером
+- `npm run test:unit` - запуск unit тесов с jest
+- `npm run test:e2e` - end-to-end тестирование приложения с cypress
+- `npm run prepare` - прекоммит хуки с husky
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+---
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Архитектура проекта
+
+В проекте использовалась архитектурная методология для фронтенд проектов - **Feature-Sliced Design**
+
+Документация методологии - [Feature-Sliced Design (FSD)](https://feature-sliced.design/ru/docs)
+
+---
+
+## Интернационализация проекта
+
+Для интернационализации проекта используется библиотека i18next.
+Переводы хранятся в [public/locales](./public/locales).
+
+Для комфортной работы с библиотекой рекомендуется установка соответствующих плагинов для среды разработки.
+
+Документация библиотеки - [i18next](https://react.i18next.com/)
+
+---
+
+## Тестирование
+
+Тестирование состоит их 3 типов тестов:
+1) `npm run test:unit` - unit тестирование с jest
+2) `npm run test:unit` - тестирование компонентов с React testing library
+3) `npm run test:e2e` - end-to-end тестирование приложения с cypress
+
+[Подробнее о тестировании](./docs/test.md)
+
+---
+
+## Линтинг и форматирование
+
+В проекте используется eslint для проверки typescript кода.
+Для форматирования используется prettier.
+
+##### Скрипты для запуска линтеров и форматирования
+- `npm run lint:ts` - проверка ts файлов линтером с правилами из prettier
+- `npm run lint:ts:fix` - исправление ts файлов линтером с правилами из prettier
+
+---
+
+## Конфигурация проекта
+
+Конфиг vite - [vite.config.ts](./vite.config.ts)
+
+- [config/jest/config](./config/jest/config) - конфигурация jest
+- [cypress.config](./cypress.config.ts) - конфигурация cypress
+
+---
+
+## CI pipeline и pre-commit хуки
+
+Конфигурация github actions находится в /.github/workflows.
+В ci прогоняются все виды тестов, сборка проекта и линтинг.
+
+В прекоммит хуках происходит проверка линтинга и форматирования измененных файлов с помощью `lint-staged`, конфиг
+находится в [/.husky](./.husky)
+
+---
+
+## Работа с состоянием проекта
+
+Взаимодействие с данными осуществляется с помощью менеджера состояния redux toolkit.
+
+Запросы на сервер отправляются с применением [RTK query](./src/shared/api/rtkApi.ts).
+
+---
+
+## Сущности (entities) по FSD
+
+- [Book](./src/entities/Book)
+
+---
+
+## Фичи (features) по FSD
+
+- [BookData](./src/features/BookData)
+- [LangSwitcher](./src/features/LangSwitcher)
+- [SearchBooks](./src/features/SearchBooks)
+- [ThemeSwitcher](./src/features/ThemeSwitcher)
