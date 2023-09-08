@@ -6,6 +6,7 @@
 
 - `npm install` - установка зависимостей
 - `npm run dev` - запуск dev проекта
+- `npm run dev:docker` - запуск dev проекта в docker контейнере
 - `npm run build:docker` - сборка и предпросмотр prod билда в docker контейнере
 
 ---
@@ -14,6 +15,7 @@
 
 - `npm run dev` - запуск dev проекта
 - `npm run build` - сборка в prod режиме в папку dist
+- `npm run dev:docker` - сборка и предпросмотр prod билда в docker контейнере
 - `npm run build:docker` - сборка и предпросмотр prod билда в docker контейнере
 - `npm run preview` - предпросмотр prod сборки
 - `npm run lint:ts` - проверка ts файлов линтером

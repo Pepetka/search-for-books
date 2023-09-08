@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite --host",
     "build": "tsc && vite build",
-    "build:docker": "docker compose up",
+    "dev:docker": "docker compose -f docker-compose-dev.yml -p dockerdev up",
+    "build:docker": "docker compose -f docker-compose-build.yml -p dockerbuild up",
     "lint:ts": "eslint \"**/*.{ts,tsx,js,cjs}\"",
     "lint:ts:fix": "eslint \"**/*.{ts,tsx,js,cjs}\" --fix",
     "test:unit": "jest --config=./config/jest/config/jest.config.ts",
