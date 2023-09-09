@@ -23,6 +23,8 @@
 - `npm run test:unit` - запуск unit тесов с jest
 - `npm run test:e2e` - end-to-end тестирование приложения с cypress
 - `npm run prepare` - прекоммит хуки с husky
+- `npm run storybook` - запуск storybook
+- `npm run storybook:build` - сборка storybook
 
 ---
 
@@ -67,12 +69,26 @@
 
 ---
 
+## Storybook
+
+В проекте для каждого компонента описываются стори-кейсы.
+Для перехвата запросов на сервер используется msw-storybook-addon.
+
+Файл со стори-кейсами (.stories.tsx) находятся рядом с компонентом.
+
+- `npm run storybook` - запуск storybook
+- `npm run storybook:build` - сборка storybook
+
+[Подробнее о Storybook](./docs/storybook.md)
+
+---
 ## Конфигурация проекта
 
 Конфиг vite - [vite.config.ts](./vite.config.ts)
 
 - [config/jest/config](./config/jest/config) - конфигурация jest
 - [cypress.config](./cypress.config.ts) - конфигурация cypress
+- [.storybook](./.storybook) - конфигурация storybook
 
 ---
 

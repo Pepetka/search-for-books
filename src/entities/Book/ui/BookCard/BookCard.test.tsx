@@ -3,7 +3,7 @@ import { screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import userEvent from '@testing-library/user-event';
 import { componentTestRender } from '@/shared/config/jest';
-import { IBook } from '../../model/types/bookData';
+import { Book } from '../../model/types/bookData';
 import { BookCard } from './BookCard';
 
 const mockNavigate = jest.fn();
@@ -12,7 +12,7 @@ jest.mock('react-router-dom', () => ({
 	useNavigate: () => mockNavigate,
 }));
 
-const bookData: DeepRequired<IBook> = {
+const bookData: DeepRequired<Book> = {
 	id: '1',
 	volumeInfo: {
 		title: 'Test title',

@@ -2,10 +2,10 @@ import '@testing-library/jest-dom';
 import { screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import { componentTestRender } from '@/shared/config/jest';
-import { IBook } from '@/entities/Book';
+import { Book } from '@/entities/Book';
 import { BookList } from './BookList';
 
-const books: DeepRequired<IBook>[] = new Array(3).fill(0).map((_, index) => ({
+const books: DeepRequired<Book>[] = new Array(3).fill(0).map((_, index) => ({
 	id: `${index}`,
 	volumeInfo: {
 		title: 'Test title',

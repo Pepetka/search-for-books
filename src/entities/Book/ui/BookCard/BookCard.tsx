@@ -2,11 +2,11 @@ import { memo, MouseEvent, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getBookPagePath } from '@/shared/const/router';
 import { AppImage } from '@/shared/ui/AppImage';
-import { IBook } from '../../model/types/bookData';
+import { Book } from '../../model/types/bookData';
 import cls from './BookCard.module.scss';
 
 interface IBookCardProps {
-	bookData: DeepRequired<IBook>;
+	bookData: DeepRequired<Book>;
 }
 
 export const BookCard = memo((props: IBookCardProps) => {

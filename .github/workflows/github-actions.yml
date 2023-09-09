@@ -96,3 +96,7 @@ jobs:
         run: npm run build
         env:
           VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
+      - name: build storybook
+        run: npm run storybook:build
+        env:
+          VITE_API_KEY: ${{ secrets.VITE_API_KEY }}

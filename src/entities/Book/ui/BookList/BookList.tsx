@@ -1,10 +1,10 @@
 import { memo } from 'react';
-import { IBook } from '../../model/types/bookData';
+import { Book } from '../../model/types/bookData';
 import { BookCard } from '../BookCard/BookCard';
 import cls from './BookList.module.scss';
 
 interface IBookListProps {
-	books: DeepRequired<IBook>[];
+	books: DeepRequired<Book>[];
 }
 
 export const BookList = memo((props: IBookListProps) => {
