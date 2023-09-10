@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/react';
 import { initialize, mswLoader } from 'msw-storybook-addon';
+import {StyleDecorator} from "../src/shared/config/storybook";
 
 initialize({
 	onUnhandledRequest: 'bypass'
@@ -16,6 +17,7 @@ const preview: Preview = {
 		},
 	},
 	loaders: [mswLoader],
+	decorators: [StyleDecorator],
 };
 
 export default preview;

@@ -1,6 +1,5 @@
 import { Decorator } from '@storybook/react';
 import { ThemeProvider } from '@/app/providers/Themes';
-import '@/app/styles/index.scss';
 import { Theme } from '@/shared/const/theme';
 
 export const getThemeDecorator =
@@ -22,6 +21,7 @@ export const getThemeDecorator =
 					display: 'flex',
 					justifyContent: 'center',
 					alignItems: 'center',
+					color: 'var(--color)',
 				}}
 			>
 				<ThemeProvider initialTheme={theme}>
@@ -36,7 +36,6 @@ export const getThemeDecorator =
 							justifyContent: 'center',
 							alignItems: 'center',
 						}}
-						className={theme}
 					>
 						<StoryComponent />
 					</div>
