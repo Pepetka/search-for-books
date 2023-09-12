@@ -22,6 +22,7 @@ body {
   background-color: var(--bg-color);
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -44,16 +45,19 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: var(--hover-color);
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
 
 @media (max-width: 480px) {
   :root {
     font-size: 16px;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  button:hover {
+    border-color: var(--hover-color);
+  }
+  button:focus,
+  button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
   }
 }

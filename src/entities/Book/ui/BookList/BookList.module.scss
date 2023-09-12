@@ -1,7 +1,8 @@
 .BookList {
 	display: grid;
-	width: 100%;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	gap: 1rem;
+	width: min(90%, 1920px);
+	grid-template-columns: repeat(auto-fit, 300px);
+	gap: 2rem;
 	justify-items: center;
+	justify-content: center;
 }

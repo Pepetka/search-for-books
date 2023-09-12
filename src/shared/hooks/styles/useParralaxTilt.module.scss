@@ -1,0 +1,24 @@
+.parallaxTilt {
+	transform-style: preserve-3d;
+	transition: transform 0.5s linear;
+}
+
+.layer1 {
+	width: 100%;
+	transform: translateZ(100px);
+}
+
+.layer2 {
+	width: 100%;
+	transform: translateZ(80px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.parallaxTilt {
+		transform: rotateX(var(--rx)) rotateY(var(--ry));
+
+		&:hover {
+			transition: transform 0.1s linear;
+		}
+	}
+}
