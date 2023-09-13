@@ -1,5 +1,5 @@
 import { rtkApi } from '@/shared/api/rtkApi';
-import fallbackImg from '@/shared/assets/img/fallback.jpg';
+import fallbackImg from '@/shared/assets/img/fallback.webp';
 import { SearchParams } from '@/shared/types/bookSearch';
 import { Book } from '@/entities/Book/model/types/bookData';
 

@@ -6,7 +6,7 @@ import {
 	getStoreDecorator,
 	getThemeDecorator,
 } from '@/shared/config/storybook';
-import testImage from '@/shared/assets/img/test.jpg';
+import testImage from '@/shared/assets/img/test.webp';
 import { Lang } from '@/shared/const/lang';
 import { BookData } from './BookData';
 

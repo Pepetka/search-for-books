@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Book } from '@/entities/Book';
-import testImg from '@/shared/assets/img/test.jpg';
+import testImg from '@/shared/assets/img/test.webp';
 import {
 	getRouterDecorator,
 	getThemeDecorator,

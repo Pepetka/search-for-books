@@ -6,7 +6,7 @@ import {
 	getThemeDecorator,
 } from '@/shared/config/storybook';
 import { Book } from '@/entities/Book';
-import testImg from '@/shared/assets/img/test.jpg';
+import testImg from '@/shared/assets/img/test.webp';
 import { defaultSearchParams } from '@/shared/const/bookSort.ts';
 import { SearchBooks } from './SearchBooks';
 

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { rest } from 'msw';
 import { getThemeDecorator } from '@/shared/config/storybook';
-import testImg from '@/shared/assets/img/test.jpg';
+import testImg from '@/shared/assets/img/test.webp';
 import { AppImage } from './AppImage';
 
 const meta = {
@@ -25,12 +25,12 @@ export const Normal: Story = {
 };
 Normal.args = {
 	theme: 'normal',
-	src: `${__API__}/fulfilled.jpg`,
+	src: `${__API__}/fulfilled.webp`,
 };
 Normal.parameters = {
 	msw: {
 		handlers: [
-			rest.get(`${__API__}/fulfilled.jpg`, async (_, res, ctx) => {
+			rest.get(`${__API__}/fulfilled.webp`, async (_, res, ctx) => {
 				const imageBuffer = await fetch(testImg).then((res) =>
 					res.arrayBuffer()
 				);
@@ -50,12 +50,12 @@ export const Error: Story = {
 };
 Error.args = {
 	theme: 'normal',
-	src: `${__API__}/error.jpg`,
+	src: `${__API__}/error.webp`,
 };
 Error.parameters = {
 	msw: {
 		handlers: [
-			rest.get(`${__API__}/error.jpg`, (_, res, ctx) => {
+			rest.get(`${__API__}/error.webp`, (_, res, ctx) => {
 				return res(ctx.status(404));
 			}),
 		],
@@ -66,13 +66,13 @@ export const NormalLoading: Story = {
 	decorators: [getThemeDecorator({ invert: true })],
 };
 NormalLoading.args = {
-	src: `${__API__}/loading.jpg`,
+	src: `${__API__}/loading.webp`,
 	theme: 'normal',
 };
 NormalLoading.parameters = {
 	msw: {
 		handlers: [
-			rest.get(`${__API__}/loading.jpg`, (_, res, ctx) => {
+			rest.get(`${__API__}/loading.webp`, (_, res, ctx) => {
 				return res(ctx.delay('infinite'));
 			}),
 		],
@@ -83,13 +83,13 @@ export const InvertLoading: Story = {
 	decorators: [getThemeDecorator()],
 };
 InvertLoading.args = {
-	src: `${__API__}/loading.jpg`,
+	src: `${__API__}/loading.webp`,
 	theme: 'invert',
 };
 InvertLoading.parameters = {
 	msw: {
 		handlers: [
-			rest.get(`${__API__}/loading.jpg`, (_, res, ctx) => {
+			rest.get(`${__API__}/loading.webp`, (_, res, ctx) => {
 				return res(ctx.delay('infinite'));
 			}),
 		],

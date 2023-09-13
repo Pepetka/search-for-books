@@ -14,7 +14,11 @@ export const ThemeSwitcher = memo(() => {
 
 	return (
 		<div data-testid="ThemeSwitcher" className={cls.ThemeSwitcher}>
-			<button data-testid="ThemeSwitcher.button" onClick={onChangeTheme}>
+			<button
+				data-testid="ThemeSwitcher.button"
+				aria-label="Switch theme"
+				onClick={onChangeTheme}
+			>
 				{theme === Theme.DARK ? t('Dark') : t('Light')}
 			</button>
 		</div>

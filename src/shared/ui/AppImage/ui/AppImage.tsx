@@ -1,5 +1,5 @@
 import { ImgHTMLAttributes, memo, useLayoutEffect, useState } from 'react';
-import fallbackImg from '@/shared/assets/img/fallback.jpg';
+import fallbackImg from '@/shared/assets/img/fallback.webp';
 import { Loader, LoaderTheme } from '@/shared/ui/Loader';
 import { classNames } from '@/shared/helpers/classNames/classNames';
 import cls from './AppImage.module.scss';

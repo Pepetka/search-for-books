@@ -8,11 +8,16 @@ export const LangSwitcher = memo(() => {
 
 	const onChangeLang = async () => {
 		await i18n.changeLanguage(i18n.language === Lang.RU ? Lang.EN : Lang.RU);
+		document.documentElement.lang = i18n.language;
 	};
 
 	return (
 		<div data-testid="LangSwitcher" className={cls.LangSwitcher}>
-			<button data-testid="LangSwitcher.button" onClick={onChangeLang}>
+			<button
+				data-testid="LangSwitcher.button"
+				aria-label="Switch language"
+				onClick={onChangeLang}
+			>
 				{i18n.language === Lang.RU ? 'Ru' : 'En'}
 			</button>
 		</div>

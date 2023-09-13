@@ -75,6 +75,7 @@ export const SearchForm = memo((props: ISearchFormProps) => {
 				/>
 				<button
 					data-testid="SearchForm.submit"
+					aria-label="Search books"
 					className={cls.searchButton}
 					type="submit"
 				>

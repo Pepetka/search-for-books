@@ -6,7 +6,7 @@ declare module '*.svg' {
 	export default SVG;
 }
 
-declare module '*.jpg';
+declare module '*.webp';
 
 type DeepPartial<T> = T extends object
 	? { [P in keyof T]?: DeepPartial<T[P]> }

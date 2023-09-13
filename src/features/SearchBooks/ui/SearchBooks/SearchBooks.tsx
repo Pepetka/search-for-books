@@ -66,6 +66,7 @@ export const SearchBooks = memo((props: ISearchBooksProps) => {
 			{!data?.endReached && (
 				<button
 					data-testid="SearchBooks.loadmore"
+					aria-label="Load more books"
 					className={cls.button}
 					onClick={onLoadMore}
 					disabled={isFetching}

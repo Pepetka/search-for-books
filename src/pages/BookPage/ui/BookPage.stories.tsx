@@ -7,7 +7,7 @@ import {
 	getThemeDecorator,
 } from '@/shared/config/storybook';
 import { Book } from '@/entities/Book';
-import testImage from '@/shared/assets/img/test.jpg';
+import testImage from '@/shared/assets/img/test.webp';
 import { getBookPagePath } from '@/shared/const/router';
 import BookPage from './BookPage';
 
