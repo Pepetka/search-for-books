@@ -37,7 +37,13 @@ export const Page = memo((props: IPageProps) => {
 	}, [onScroll]);
 
 	useEffect(() => {
-		window.scrollTo(0, scroll);
+		const timer = setTimeout(() => {
+			window.scrollTo(0, scroll);
+		}, 50);
+
+		return () => {
+			clearTimeout(timer);
+		};
 		// eslint-disable-next-line
 	}, [location.pathname, location.search]);
 
