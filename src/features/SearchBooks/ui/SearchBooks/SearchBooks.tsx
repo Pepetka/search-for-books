@@ -65,21 +65,19 @@ export const SearchBooks = memo((props: ISearchBooksProps) => {
 			{data && (
 				<BookList
 					books={data.items}
-					endReached={onLoadMore}
+					onEndReached={onLoadMore}
 					footer={
-						<>
-							{!data?.endReached && (
-								<button
-									data-testid="SearchBooks.loadmore"
-									aria-label="Load more books"
-									className={cls.button}
-									onClick={onLoadMore}
-									disabled={isFetching}
-								>
-									{isFetching ? t('Loading') : t('Load more')}
-								</button>
-							)}
-						</>
+						data.endReached ? undefined : (
+							<button
+								data-testid="SearchBooks.loadmore"
+								aria-label="Load more books"
+								className={cls.button}
+								onClick={onLoadMore}
+								disabled={isFetching}
+							>
+								{isFetching ? t('Loading') : t('Load more')}
+							</button>
+						)
 					}
 				/>
 			)}

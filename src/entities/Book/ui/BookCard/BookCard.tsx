@@ -2,8 +2,8 @@ import { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getBookPagePath } from '@/shared/const/router';
 import { AppImage } from '@/shared/ui/AppImage';
-import { useParallaxTilt } from '@/shared/hooks/useParallaxTilt.ts';
-import { classNames } from '@/shared/helpers/classNames/classNames.ts';
+import { useParallaxTilt } from '@/shared/hooks/useParallaxTilt';
+import { classNames } from '@/shared/helpers/classNames/classNames';
 import { Book } from '../../model/types/bookData';
 import cls from './BookCard.module.scss';
 

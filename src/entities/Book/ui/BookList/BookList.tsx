@@ -8,7 +8,7 @@ import cls from './BookList.module.scss';
 interface IBookListProps {
 	books: DeepRequired<Book>[];
 	footer?: ReactNode;
-	endReached?: () => void;
+	onEndReached?: () => void;
 }
 
 const ListContainer = forwardRef<
@@ -31,7 +31,7 @@ const overscan = {
 };
 
 export const BookList = memo((props: IBookListProps) => {
-	const { books, footer, endReached } = props;
+	const { books, footer, onEndReached } = props;
 
 	return (
 		<div className={cls.listWrapper}>
@@ -42,9 +42,11 @@ export const BookList = memo((props: IBookListProps) => {
 				overscan={overscan}
 				components={{
 					List: ListContainer,
-					Footer: () => <div className={cls.footer}>{footer}</div>,
+					Footer: () => {
+						if (footer) return <div className={cls.footer}>{footer}</div>;
+					},
 				}}
-				endReached={endReached}
+				endReached={onEndReached}
 				computeItemKey={(index, book) => `${book.id}index:${index}`}
 				itemContent={(_, book) => <BookCard bookData={book} />}
 			/>

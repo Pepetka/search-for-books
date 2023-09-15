@@ -12,6 +12,7 @@ dist
 dist-ssr
 reports
 storybook-static
+dev-dist
 
 # Editor directories and files
 .vscode/*

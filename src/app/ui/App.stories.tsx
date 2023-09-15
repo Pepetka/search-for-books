@@ -8,7 +8,7 @@ import {
 } from '@/shared/config/storybook';
 import { Book } from '@/entities/Book';
 import testImg from '@/shared/assets/img/test.webp';
-import { getBookPagePath } from '@/shared/const/router.ts';
+import { getBookPagePath } from '@/shared/const/router';
 import App from './App';
 
 const meta = {

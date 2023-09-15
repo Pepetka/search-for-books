@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { getLangDecorator, getThemeDecorator } from '@/shared/config/storybook';
-import { Lang } from '@/shared/const/lang.ts';
+import { Lang } from '@/shared/const/lang';
 import { LangSwitcher } from './LangSwitcher';
 
 const meta = {
