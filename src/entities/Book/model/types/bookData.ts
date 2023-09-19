@@ -1,4 +1,4 @@
-export interface IVolumeInfo {
+interface IVolumeInfo {
 	title: string;
 	subtitle?: string;
 	description?: string;
@@ -9,7 +9,7 @@ export interface IVolumeInfo {
 	categories?: string[];
 }
 
-export interface IBook {
+export interface Book {
 	id: string;
 	volumeInfo: IVolumeInfo;
 }

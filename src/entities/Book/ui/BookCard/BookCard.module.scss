@@ -1,3 +1,8 @@
+.perspectiveWrapper {
+	--rx: 0deg;
+	--ry: 0deg;
+}
+
 .BookCard {
 	height: 500px;
 	width: 300px;
@@ -7,11 +12,7 @@
 	text-align: start;
 	cursor: pointer;
 	box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
-
-	&:hover {
-		transform: scale(1.01);
-		transition: transform 0.1s linear;
-	}
+	background: var(--bg-color);
 }
 
 .imageWrapper {

@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import fallbackImg from '@/shared/assets/img/fallback.jpg';
+import fallbackImg from '@/shared/assets/img/fallback.webp';
 import { Loader } from '@/shared/ui/Loader';
 import { AppImage } from '@/shared/ui/AppImage';
 import { useFetchBookItemDataQuery } from '../../api/bookDataApi';

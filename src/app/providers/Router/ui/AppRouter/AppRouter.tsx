@@ -9,9 +9,7 @@ export const AppRouter = memo(
 	({ config = routeConfig }: { config?: RouteConfig }) => {
 		const renderWithWrapper = useCallback(({ path, element }: RouteProps) => {
 			const routeElement = (
-				<Suspense fallback={<PageLoader theme="invert" />}>
-					<Page>{element}</Page>
-				</Suspense>
+				<Suspense fallback={<PageLoader theme="invert" />}>{element}</Suspense>
 			);
 
 			return (
@@ -30,10 +28,15 @@ export const AppRouter = memo(
 		}, []);
 
 		return (
-			<Routes>
-				<Route path="/" element={<Navigate to={getMainPagePath()} replace />} />
-				{Object.values(config).map(renderWithWrapper)}
-			</Routes>
+			<Page>
+				<Routes>
+					<Route
+						path="/"
+						element={<Navigate to={getMainPagePath()} replace />}
+					/>
+					{Object.values(config).map(renderWithWrapper)}
+				</Routes>
+			</Page>
 		);
 	}
 );

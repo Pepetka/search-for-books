@@ -5,6 +5,7 @@ import { LOCAL_STORAGE_THEME_KEY } from '@/shared/const/localstorage';
 
 interface IThemeProviderProps {
 	children: ReactNode;
+	initialTheme?: Theme;
 }
 
 const localTheme =
@@ -13,8 +14,11 @@ const localTheme =
 		? Theme.DARK
 		: Theme.LIGHT);
 
-export const ThemeProvider = ({ children }: IThemeProviderProps) => {
-	const [theme, setTheme] = useState<Theme>(localTheme);
+export const ThemeProvider = ({
+	children,
+	initialTheme,
+}: IThemeProviderProps) => {
+	const [theme, setTheme] = useState<Theme>(initialTheme ?? localTheme);
 
 	const themeValue = useMemo(
 		() => ({
@@ -25,11 +29,13 @@ export const ThemeProvider = ({ children }: IThemeProviderProps) => {
 	);
 
 	useEffect(() => {
-		const body = document.querySelector('body') as HTMLElement;
+		const themeRoot = document.querySelector('[data-themeroot]') as HTMLElement;
 
-		body.classList.remove(Theme.DARK);
-		body.classList.remove(Theme.LIGHT);
-		body.classList.add(theme);
+		if (themeRoot) {
+			themeRoot.classList.remove(Theme.DARK);
+			themeRoot.classList.remove(Theme.LIGHT);
+			themeRoot.classList.add(theme);
+		}
 	}, [theme]);
 
 	return (

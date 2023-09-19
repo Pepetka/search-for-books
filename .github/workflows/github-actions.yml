@@ -54,6 +54,11 @@ jobs:
       - name: unit testing
         run: npm run test:unit
         if: always()
+      - name: screenshot testing
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          buildScriptName: 'storybook:build'
       - name: e2e testing
         uses: cypress-io/github-action@v5
         with:
@@ -94,5 +99,9 @@ jobs:
         run: npm ci
       - name: build production project
         run: npm run build
+        env:
+          VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
+      - name: build storybook
+        run: npm run storybook:build
         env:
           VITE_API_KEY: ${{ secrets.VITE_API_KEY }}

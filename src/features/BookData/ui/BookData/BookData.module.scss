@@ -1,4 +1,5 @@
 .BookData {
+	width: 100%;
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
@@ -8,7 +9,7 @@
 
 .imageWrapper {
 	height: 500px;
-	width: 500px;
+	width: min(500px, 90%);
 }
 
 .bookDataWrapper {
@@ -50,6 +51,7 @@
 .description {
 	padding: 1.5rem;
 	border: 1px solid var(--secondary-color);
+	overflow-x: auto;
 
 	span {
 		font-size: 1.5rem;

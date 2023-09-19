@@ -2,3 +2,5 @@ node_modules
 reports
 cypress
 dist
+storybook-static
+dev-dist

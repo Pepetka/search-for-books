@@ -1,5 +1,4 @@
 .ThemeSwitcher {
-	color: var(--secondary-color);
 	display: flex;
 	justify-content: end;
 
@@ -8,6 +7,7 @@
 		border: none;
 		font-size: 1rem;
 		text-decoration: underline;
+		color: var(--primary-color);
 
 		&:hover {
 			border: none;

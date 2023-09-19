@@ -1,4 +1,4 @@
-import { memo, useEffect } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
@@ -29,11 +29,11 @@ export const SearchBooks = memo((props: ISearchBooksProps) => {
 		...searchParams,
 	});
 
-	const onLoadMore = () => {
-		if (!data?.endReached) {
+	const onLoadMore = useCallback(() => {
+		if (!data?.endReached && !isFetching) {
 			dispatch(searchBooksActions.setPage({ searchParams }));
 		}
-	};
+	}, [data?.endReached, dispatch, isFetching, searchParams]);
 
 	useEffect(() => {
 		dispatch(searchBooksActions.initPage({ searchParams }));
@@ -41,7 +41,7 @@ export const SearchBooks = memo((props: ISearchBooksProps) => {
 
 	if (isFetching && page === 1) {
 		return (
-			<div data-testid="SearchBooks.loading" className={cls.MainPage}>
+			<div data-testid="SearchBooks.loading" className={cls.SearchBooks}>
 				<Loader theme="invert" />
 			</div>
 		);
@@ -49,7 +49,7 @@ export const SearchBooks = memo((props: ISearchBooksProps) => {
 
 	if (isError) {
 		return (
-			<div data-testid="SearchBooks.error" className={cls.MainPage}>
+			<div data-testid="SearchBooks.error" className={cls.SearchBooks}>
 				<h2>{t('Something went wrong')}</h2>
 			</div>
 		);
@@ -62,16 +62,24 @@ export const SearchBooks = memo((props: ISearchBooksProps) => {
 					{t('Found')} {data.totalItems}
 				</h2>
 			)}
-			{data && <BookList books={data.items} />}
-			{!data?.endReached && (
-				<button
-					data-testid="SearchBooks.loadmore"
-					className={cls.button}
-					onClick={onLoadMore}
-					disabled={isFetching}
-				>
-					{isFetching ? t('Loading') : t('Load more')}
-				</button>
+			{data && (
+				<BookList
+					books={data.items}
+					onEndReached={onLoadMore}
+					footer={
+						data.endReached ? undefined : (
+							<button
+								data-testid="SearchBooks.loadmore"
+								aria-label="Load more books"
+								className={cls.button}
+								onClick={onLoadMore}
+								disabled={isFetching}
+							>
+								{isFetching ? t('Loading') : t('Load more')}
+							</button>
+						)
+					}
+				/>
 			)}
 		</div>
 	);

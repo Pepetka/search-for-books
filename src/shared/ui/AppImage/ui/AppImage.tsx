@@ -1,7 +1,7 @@
 import { ImgHTMLAttributes, memo, useLayoutEffect, useState } from 'react';
-import fallbackImg from '@/shared/assets/img/fallback.jpg';
+import fallbackImg from '@/shared/assets/img/fallback.webp';
 import { Loader, LoaderTheme } from '@/shared/ui/Loader';
-import { classNames } from '@/shared/helpers/classNames/classNames.ts';
+import { classNames } from '@/shared/helpers/classNames/classNames';
 import cls from './AppImage.module.scss';
 
 interface IImageProps extends ImgHTMLAttributes<HTMLImageElement> {
@@ -9,7 +9,15 @@ interface IImageProps extends ImgHTMLAttributes<HTMLImageElement> {
 }
 
 export const AppImage = memo((props: IImageProps) => {
-	const { theme, src, alt = '', className, ...otherProps } = props;
+	const {
+		theme,
+		src,
+		alt = '',
+		className,
+		width,
+		height,
+		...otherProps
+	} = props;
 	const [isLoading, setIsLoading] = useState(true);
 	const [isError, setIsError] = useState(false);
 
@@ -31,6 +39,7 @@ export const AppImage = memo((props: IImageProps) => {
 			<div
 				data-testid="AppImage.error"
 				className={classNames([cls.AppImage, className])}
+				style={{ width, height }}
 			>
 				<img src={fallbackImg} {...otherProps} alt={alt} />
 			</div>
@@ -42,6 +51,7 @@ export const AppImage = memo((props: IImageProps) => {
 			<div
 				data-testid="AppImage.loading"
 				className={classNames([cls.AppImage, className])}
+				style={{ width, height }}
 			>
 				<div className={cls.loader}>
 					<Loader theme={theme} />
@@ -54,6 +64,7 @@ export const AppImage = memo((props: IImageProps) => {
 		<div
 			data-testid="AppImage"
 			className={classNames([cls.AppImage, className])}
+			style={{ width, height }}
 		>
 			<img src={src} {...otherProps} alt={alt} />
 		</div>

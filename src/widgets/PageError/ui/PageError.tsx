@@ -10,6 +10,7 @@ export const PageError = memo(() => {
 			<h1>{t('Something went wrong')}</h1>
 			<button
 				data-testid="PageError.button"
+				aria-label="Reload page"
 				onClick={() => window.location.reload()}
 			>
 				{t('Reload page')}

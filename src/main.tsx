@@ -1,7 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-import App from '@/app/ui/App.tsx';
+import App from '@/app/ui/App';
 import { PageLoader } from '@/widgets/PageLoader';
 import { ThemeProvider } from '@/app/providers/Themes';
 import { ErrorBoundary } from './app/providers/ErrorBoundary';

@@ -1,7 +1,7 @@
 import { rtkApi } from '@/shared/api/rtkApi';
-import fallbackImg from '@/shared/assets/img/fallback.jpg';
+import fallbackImg from '@/shared/assets/img/fallback.webp';
 import { SearchParams } from '@/shared/types/bookSearch';
-import { IBook, IVolumeInfo } from '@/entities/Book/model/types/bookData';
+import { Book } from '@/entities/Book/model/types/bookData';
 
 interface ISearchBooksApiArgs {
 	q: SearchParams['q'];
@@ -13,11 +13,11 @@ interface ISearchBooksApiArgs {
 
 interface IResponse {
 	totalItems: number;
-	items: DeepRequired<IBook>[];
+	items: DeepRequired<Book>[];
 	endReached: boolean;
 }
 
-const fallbackVolumeInfo: DeepRequired<IVolumeInfo> = {
+const fallbackVolumeInfo: DeepRequired<Book['volumeInfo']> = {
 	authors: ['No data about authors'],
 	categories: ['No data about categories'],
 	subtitle: '',

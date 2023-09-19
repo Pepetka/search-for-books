@@ -8,7 +8,7 @@ module.exports = {
     'prettier',
     'plugin:i18next/recommended'
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'node_modules', 'storybook-static'],
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh', 'prettier', 'unused-imports', 'import', 'i18next'],
   rules: {

@@ -1,7 +1,16 @@
 .BookList {
 	display: grid;
-	width: 100%;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	gap: 1rem;
+	grid-template-columns: repeat(auto-fit, minmax(300px, max-content));
+	grid-gap: 2rem;
 	justify-items: center;
+	justify-content: center;
+}
+
+.listWrapper {
+	height: auto;
+	width: min(90%, 1920px);
+}
+
+.footer {
+	padding-block: 2rem;
 }

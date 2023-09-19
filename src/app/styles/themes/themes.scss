@@ -1,21 +1,23 @@
+@import url('../globals/globals.scss');
+
 .dark_theme {
-	--color: rgba(255, 255, 255, 0.87);
-	--invert-color: #213547;
+	--color: var(--primary-color);
+	--invert-color: var(--secondary-color);
 
-	--bg-color: #242424;
-	--invert-bg-color: #ffffff;
+	--bg-color: var(--primary-bg-color);
+	--invert-bg-color: var(--secondary-bg-color);
 
-	--button-color: #1a1a1a;
-	--invert-button-color: #a6a6a6;
+	--button-color: var(--primary-button-color);
+	--invert-button-color: var(--secondary-button-color);
 }
 
 .light_theme {
-	--color: #213547;
-	--invert-color: rgba(255, 255, 255, 0.87);
+	--color: var(--secondary-color);
+	--invert-color: var(--primary-color);
 
-	--bg-color: #ffffff;
-	--invert-bg-color: #242424;
+	--bg-color: var(--secondary-bg-color);
+	--invert-bg-color: var(--primary-bg-color);
 
-	--button-color: #a6a6a6;
-	--invert-button-color: #1a1a1a;
+	--button-color: var(--secondary-button-color);
+	--invert-button-color: var(--primary-button-color);
 }

@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { classNames } from '@/shared/helpers/classNames/classNames.ts';
+import { classNames } from '@/shared/helpers/classNames/classNames';
 import cls from './Loader.module.scss';
 
 export type LoaderTheme = 'normal' | 'invert';

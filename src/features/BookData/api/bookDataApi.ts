@@ -1,7 +1,7 @@
 import { rtkApi } from '@/shared/api/rtkApi';
-import { IBook } from '@/entities/Book/model/types/bookData';
+import { Book } from '@/entities/Book/model/types/bookData';
 
-interface IResponse extends IBook {}
+interface IResponse extends Book {}
 
 interface IBookDaaApiArgs {
 	bookId: string;
